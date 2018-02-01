@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Chess tactics</title>
+	<link rel="stylesheet" type="text/css" href="css/chessboard.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+	<meta charset="utf-8">
+	<style>
+		#btn-close-modal {
+			width: 100%;
+			text-align: center;
+			cursor: pointer;
+			color: #fff;
+			font-size: 3em;
+			padding: 20px;
+		}
+
+		.gif {
+			width: 100vw;
+		}
+
+		#slopeForm {
+			margin-top: 20%;
+		}
+
+		#newTacticButtonDiv {
+			text-align: center;
+			margin: auto;
+		}
+
+		.newTacticButton {
+			font-size: 2em;
+			padding: 10px;
+			border: black 1px solid;
+			border-radius: 10px;
+			color: grey;
+			background-color: aqua;
+			cursor: pointer;
+		}
+
+		.newTacticButton:hover {
+			color: black;
+			background-color: greenyellow;
+		}
+
+		.highlight-white {
+			-webkit-box-shadow: inset 0 0 3px 3px yellow;
+			-moz-box-shadow: inset 0 0 3px 3px yellow;
+			box-shadow: inset 0 0 3px 3px yellow;
+		}
+	</style>
+</head>
+
+<body id="bodyId">
+	<form name="frmSlope" id="slopeForm">
+		<div id="newTacticButtonDiv">
+			<input type="button" value="New Tactic" class="basla newTacticButton" id="newTacticButton">
+		</div>
+
+		<br>
+		<!-- <center>
+			<div id="board" style="width: 500px"></div>
+			<p>Durum:
+				<span id="status"></span>
+			</p>
+			<p>FEN:
+				<span id="fen"></span>
+			</p>
+			<p>PGN:
+				<span id="pgn"></span>
+			</p>
+		</center> -->
+		<center>
+			<div id="newBoard" style="width: 500px"></div>
+			<input type="button" id="btnPrevious" value="ONCEKI HAMLE" />
+			<input type="button" id="btnHint" class="newTacticButton" value="HINT" />
+			<p>Durum:
+				<span id="status"></span>
+			</p>
+			<p>FEN:
+				<span id="fen"></span>
+			</p>
+			<p>PGN:
+				<span id="pgn"></span>
+			</p>
+		</center>
+	</form>
+
+	<!--Call your modal-->
+	<a style="display:none" id="modal" href="#animatedModal">DEMO01</a>
+
+	<!--Animated Modal-->
+	<div id="animatedModal">
+		<!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID  class="close-animatedModal" -->
+		<div class="modal-content">
+			<img src="img/congrats.gif" class="gif" />
+		</div>
+
+		<div id="btn-close-modal" class="close-animatedModal">
+			CONTINUE TO THE NEXT QUESTION
+		</div>
+
+	</div>
+
+
+	<script src="js/jquery-1.10.1.min.js"></script>
+	<!-- https://code.jquery.com/jquery/ -->
+	<script src="js/libraries/pgnParser/pgnParser.js"></script>
+	<script src="js/libraries/animatedModaljs/animatedModal.min.js"></script>
+	<script src="js/json3.min.js"></script>
+	<!-- https://bestiejs.github.io/json3/ -->
+	<script src="js/chessboard-0.3.0.js"></script>
+	<!-- http://chessboardjs.com/#start -->
+	<script src="js/chess.js"></script>
+	<!-- https://github.com/jhlywa/chess.js/blob/master/README.md -->
+	<script src="js/main.js"></script>
+
+	<script type="text/javascript">
+		$("document").ready(function () {
+			//loadTactic();
+		});
+		$("#modal").animatedModal({
+			animatedIn: 'fadeInLeft',
+			animatedOut: 'bounceOutDown',
+			color: '#3498db',
+			animationDuration: '.5s',
+			// Callbacks
+			beforeOpen: function () {
+				console.log("The animation was called");
+			},
+			afterOpen: function () {
+				console.log("The animation is completed");
+			},
+			beforeClose: function () {
+				console.log("The animation was called");
+			},
+			afterClose: function () {
+				console.log("The animation is completed");
+			}
+		});
+	</script>
+
+</body>
+
+</html>

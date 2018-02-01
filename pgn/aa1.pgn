@@ -1,0 +1,234 @@
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "1"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/8/8/8/8/8/2p5/N7 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxc2 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "2"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/8/8/8/8/1p6/8/N7 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxb3 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "3"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/8/8/8/8/r7/8/1N6 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxa3 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "4"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/8/8/8/8/2b5/8/1N6 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxc3 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "5"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/8/8/8/8/8/3n4/1N6 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxd2 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "6"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/8/8/8/8/8/p7/2N5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxa2 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "7"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/8/8/8/8/1r6/8/2N5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxb3 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "8"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/8/8/8/8/3b4/8/2N5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxd3 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "9"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/8/8/8/8/8/4q3/2N5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxe2 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "10"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/8/8/8/8/8/2N5/4q3 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxe1 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "11"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/8/8/8/3N4/8/2r5/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxc2 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "12"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/8/8/8/4N3/2b5/8/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxc3 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "13"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/8/8/4N3/8/5q2/8/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxf3 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "14"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4r3/6N1/8/8/8/8/8/K1k5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxe8 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "15"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/8/7N/5p2/8/8/8/K1k5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxf5 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "16"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/8/5b2/8/6N1/8/8/K1k5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxf6 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "17"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/8/3r4/8/4N3/8/8/K1k5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxd6 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.10.17"]
+[Round "?"]
+[White "18"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/8/8/8/4N3/8/3q4/K1k5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxd2 *
+

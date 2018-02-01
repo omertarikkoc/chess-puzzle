@@ -1,0 +1,24 @@
+{
+  "name": "pgnToJSON",
+  "version": "0.0.7",
+  "description": "A simple PGN (Portable Game Notation) to JSON library in javascript",
+  "author": "Samuel Rondeau-Millaire <contact@samrm.io>",
+  "private": false,
+  "main": "pgnParser.js",
+  "typings": "./pgnParser.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samrm111/pgnToJSON.git"
+  },
+  "bugs": {
+    "url": "https://github.com/samrm111/pgnToJSON.git/issues"
+  },
+  "keywords": [
+    "pgn",
+    "portable game notation",
+    "json",
+    "js",
+    "javascript"
+  ],
+  "license": "MIT"
+}

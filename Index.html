@@ -5,6 +5,10 @@
 	<title>Chess tactics</title>
 	<link rel="stylesheet" type="text/css" href="css/chessboard.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+	<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./bower_components/bootstrap-sweetalert/dist/sweetalert.css">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 	<meta charset="utf-8">
 	<style>
 		#btn-close-modal {
@@ -17,12 +21,11 @@
 		}
 
 		.gif {
-			width: 100vw;
+			width: 50%;
+			margin: auto;
 		}
 
-		#slopeForm {
-			margin-top: 20%;
-		}
+		#slopeForm {}
 
 		#newTacticButtonDiv {
 			text-align: center;
@@ -31,12 +34,13 @@
 
 		.newTacticButton {
 			font-size: 2em;
-			padding: 10px;
+			padding: 7px;
 			border: black 1px solid;
-			border-radius: 10px;
+			border-radius: 7px;
 			color: grey;
 			background-color: aqua;
 			cursor: pointer;
+			margin: 10px;
 		}
 
 		.newTacticButton:hover {
@@ -49,65 +53,99 @@
 			-moz-box-shadow: inset 0 0 3px 3px yellow;
 			box-shadow: inset 0 0 3px 3px yellow;
 		}
+
+		.modal-content {
+			text-align: center;
+		}
+
+		.full-height {
+			height: 95vh;
+		}
 	</style>
 </head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<a class="navbar-brand" href="#">Chess Puzzle</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+	    aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="#">Home
+					<span class="sr-only">(current)</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Link</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+				    aria-expanded="false">
+					Dropdown
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="#">Action</a>
+					<a class="dropdown-item" href="#">Another action</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Something else here</a>
+				</div>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link disabled" href="#">Disabled</a>
+			</li>
+		</ul>
+		<!-- <form class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form> -->
+	</div>
+</nav>
 
 <body id="bodyId">
-	<form name="frmSlope" id="slopeForm">
-		<div id="newTacticButtonDiv">
-			<input type="button" value="New Tactic" class="basla newTacticButton" id="newTacticButton">
+	<div class="container-fluid">
+		<div class="row">
+			<!-- <div class="col-sm-12 col-md-3 col-xl-2 bd-sidebar bg-light full-height"> Sidebar </div> -->
+			<div class="col-sm-12 col-md-9 col-xl-8 py-md-3 pl-md-5 fullscreen">
+				<center>
+					<div id="successAlert" style="display:none" class="alert alert-danger alert-dismissible fade" role="alert">
+						<strong>Dogru cozdun! Tebrikler!</strong> Simdi diger soruya gec!
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="progress mt-3 mb-3" style="width: 60%">
+						<div id="progress-bar-games" class="progress-bar bg-success progress-bar-animated progress-bar-striped" role="progressbar" style="width: 1%" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
+					</div>
+					<!-- <a href="#" onClick="toggleFullScreen()">Full Screen Mode (Press Enter)</a> -->
+					<div id="newBoard" style="width: 60%; max-height: 80%" class="animated fadeIn"></div>
+					<div class="buttonGroup mt-3">
+						<button type="button" id="btnPreviousGame" class="btn btn-primary">
+							<i class="fas fa-chevron-circle-left"></i>
+						</button>
+						<button type="button" id="btnNextGame" class="btn btn-primary">
+							<i class="fas fa-chevron-circle-right"></i>
+						</button>
+						<button type="button" id="btnHint" class="btn btn-warning">
+							<i class="fas fa-info-circle"></i> Hint</button>
+					</div>
+				</center>
+			</div>
+			<div class="col-sm-12 d-none d-xl-block col-xl-2 bd-toc bg-light full-height">
+				<p>Durum:
+					<span id="puzzleCompletionStatus"></span>
+				</p>
+			</div>
+
 		</div>
-
-		<br>
-		<!-- <center>
-			<div id="board" style="width: 500px"></div>
-			<p>Durum:
-				<span id="status"></span>
-			</p>
-			<p>FEN:
-				<span id="fen"></span>
-			</p>
-			<p>PGN:
-				<span id="pgn"></span>
-			</p>
-		</center> -->
-		<center>
-			<div id="newBoard" style="width: 500px"></div>
-			<input type="button" id="btnPrevious" value="ONCEKI HAMLE" />
-			<input type="button" id="btnHint" class="newTacticButton" value="HINT" />
-			<p>Durum:
-				<span id="status"></span>
-			</p>
-			<p>FEN:
-				<span id="fen"></span>
-			</p>
-			<p>PGN:
-				<span id="pgn"></span>
-			</p>
-		</center>
-	</form>
-
-	<!--Call your modal-->
-	<a style="display:none" id="modal" href="#animatedModal">DEMO01</a>
-
-	<!--Animated Modal-->
-	<div id="animatedModal">
-		<!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID  class="close-animatedModal" -->
-		<div class="modal-content">
-			<img src="img/congrats.gif" class="gif" />
-		</div>
-
-		<div id="btn-close-modal" class="close-animatedModal">
-			CONTINUE TO THE NEXT QUESTION
-		</div>
-
 	</div>
 
-
+	</div>
 	<script src="js/jquery-1.10.1.min.js"></script>
 	<!-- https://code.jquery.com/jquery/ -->
-	<script src="js/libraries/pgnParser/pgnParser.js"></script>
-	<script src="js/libraries/animatedModaljs/animatedModal.min.js"></script>
+	<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="./bower_components/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
 	<script src="js/json3.min.js"></script>
 	<!-- https://bestiejs.github.io/json3/ -->
 	<script src="js/chessboard-0.3.0.js"></script>
@@ -115,31 +153,6 @@
 	<script src="js/chess.js"></script>
 	<!-- https://github.com/jhlywa/chess.js/blob/master/README.md -->
 	<script src="js/main.js"></script>
-
-	<script type="text/javascript">
-		$("document").ready(function () {
-			//loadTactic();
-		});
-		$("#modal").animatedModal({
-			animatedIn: 'fadeInLeft',
-			animatedOut: 'bounceOutDown',
-			color: '#3498db',
-			animationDuration: '.5s',
-			// Callbacks
-			beforeOpen: function () {
-				console.log("The animation was called");
-			},
-			afterOpen: function () {
-				console.log("The animation is completed");
-			},
-			beforeClose: function () {
-				console.log("The animation was called");
-			},
-			afterClose: function () {
-				console.log("The animation is completed");
-			}
-		});
-	</script>
 
 </body>
 

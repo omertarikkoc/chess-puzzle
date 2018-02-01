@@ -1,56 +1,75 @@
-//These tactics were from a chess tactics database
-//Citation: Harvey, William. "Chess Puzzles by GMs." 10,000 Chess Puzzles. IMAGESHACK.US, n.d. Web. 23 Apr. 2017. <http://www.wtharvey.com/>.
-
+// Global Variables
+chess = new Chess();
 var newPGN = "";
 var fenPosition;
-chess = new Chess();
 var currentMove = 0;
 var boardElement = $('#newBoard');
+var PGNFile;
 var gamesInPGN = [];
 var gamesCountInPGN = 0;
 var currentGameInPGN = 0;
+var gamesLoadedFromPGN = false;
+var puzzleCompletionStatus = "";
+var puzzleCompletionStatusElement = $('#progress-bar-games');
 
 _get_file("../pgn/aa1.pgn", function (response) {
-	var eventStrPosition = response.indexOf('[Event');
-	while(eventStrPosition !== -1){
-		var sliceStartPosition = eventStrPosition;
-		gamesCountInPGN++;
-		eventStrPosition = response.indexOf('[Event', eventStrPosition + 1);
-		var sliceEndPosition = eventStrPosition -2;
-		//console.log("Start: ", sliceStartPosition, "| End: ", sliceEndPosition);
-		if(sliceEndPosition > 0){
-			gamesInPGN.push(response.slice(sliceStartPosition, sliceEndPosition));
+	PGNFile = response;
+	loadBoard(PGNFile);
+});
+
+// Functions 
+function _get_file(url, callback) {
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", url, true);
+	xmlhttp.onreadystatechange = function () {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			callback(xmlhttp.responseText);
 		}
 	}
-	console.log("Total Games in The PGN: ", gamesCountInPGN);
+	xmlhttp.send();
+}
+
+function loadBoard(response) {
+	if (!gamesLoadedFromPGN) {
+		var eventStrPosition = response.indexOf('[Event');
+		while (eventStrPosition !== -1) {
+			var sliceStartPosition = eventStrPosition;
+			gamesCountInPGN++;
+			eventStrPosition = response.indexOf('[Event', eventStrPosition + 1);
+			var sliceEndPosition = eventStrPosition - 2;
+			if (sliceEndPosition <= 0) {
+				sliceEndPosition = PGNFile.length - 2;
+			}
+			console.log("Start: ", sliceStartPosition, "| End: ", sliceEndPosition);
+			gamesInPGN.push(response.slice(sliceStartPosition, sliceEndPosition));
+			gamesLoadedFromPGN = true;
+		}
+		console.log("Total Games in The PGN: ", gamesCountInPGN);
+	}
 	//console.log(gamesInPGN);
 	//console.log(gamesInPGN[3]);
 
 
 	newPGN = gamesInPGN[currentGameInPGN];
-	console.log(typeof(newPGN));
 	newPGN = newPGN.split('\n');
-	console.log("after split", typeof(newPGN));
-	console.log(newPGN);	
+
 	//_loadFromPGN(newPGN.join("\n"));
 
 	chess.load_pgn(newPGN.join('\n'));
-	console.log("success:", chess.load_pgn(newPGN.join('\n')));
-	
-	
+
+
+
 
 	gameHistory = chess.history({
 		verbose: true
 	});
 
-	console.log(gameHistory); 
+
 
 	//Go back to the PGN start position
-	for(i=0; i<gameHistory.length; i++){
+	for (i = 0; i < gameHistory.length; i++) {
 		chess.undo();
 	}
-	console.log(gameHistory);
-	console.log(chess.header());
 
 	fenStartingPosition = chess.fen();
 
@@ -63,22 +82,12 @@ _get_file("../pgn/aa1.pgn", function (response) {
 		onDrop: onDrop,
 	}
 
+	// Show the progress of puzzle completion
+	puzzleCompletionStatus = (currentGameInPGN + 1) + " / " + gamesCountInPGN;
+	puzzleCompletionStatusElement.html(puzzleCompletionStatus);
+
 	newBoard = ChessBoard('newBoard', chessBoardConfig);
 	newBoard.position(fenStartingPosition);
-});
-
-
-
-// Functions 
-function _get_file(url, callback) {
-	xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET", url, true);
-	xmlhttp.onreadystatechange = function () {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			callback(xmlhttp.responseText);
-		}
-	}
-	xmlhttp.send();
 }
 
 function _loadFromPGN(pgnFile, callback) {
@@ -96,28 +105,6 @@ function goToMove(ply) {
 	newBoard.position(chess.fen());
 }
 
-$('#btnPrevious').on('click', function () {
-	chess.undo();
-	newBoard.position(chess.fen());
-})
-
-$('#btnHint').on('click', function () {
-	// Find the squares to highlight
-	var fromSquare = gameHistory[currentMove].from;
-	var toSquare = gameHistory[currentMove].to;
-
-	// Add the highlight
-	boardElement.find('.square-' + fromSquare).addClass('highlight-white');
-	boardElement.find('.square-' + toSquare).addClass('highlight-white');
-
-	// Remove the classes after 2 seconds
-	setTimeout(function(){
-		boardElement.find('.square-' + fromSquare).removeClass('highlight-white');
-		boardElement.find('.square-' + toSquare).removeClass('highlight-white');
-	}, 2000);
-
-})
-
 // This function will be fired when the drop events occur
 var onDrop = function (source, target) {
 	console.log("source: ", source);
@@ -130,34 +117,120 @@ var onDrop = function (source, target) {
 
 	// Only allow the legal moves
 	if (move === null) {
+		var wrongAudio = new Audio("audio/wrong.mp3");
+		wrongAudio.play();
 		console.log("NULL");
 		return 'snapback';
-	}
-	else if(move.san == gameHistory[currentMove].san) {
+	} else if (move.san == gameHistory[currentMove].san) {
 		console.log("CORRECT");
-		if(currentMove == gameHistory.length - 1) {
-			setTimeout(function(){
-				alert("Soruyu Cozdun!!");
-			}, 1500);
+		if (currentMove == gameHistory.length - 1) {
+			currentGameInPGN++;
+			// Play the sound
+			var correctAudio = new Audio("audio/correct.mp3");
+			correctAudio.play();
+			setTimeout(function () {
+				// Show alert (https://lipis.github.io/bootstrap-sweetalert/)
+				swal({
+					title: "Tebrikler!",
+					text: "Cozumun Dogru",
+					type: "success",
+				}, function (value) {
+					loadBoard(PGNFile);
+					reRenderChessBoard();
+					changeProgressBar("progress-bar-games",currentGameInPGN,0,gamesCountInPGN);
+					console.log(value);
+				})
+				// swal("Tebrikler!", "Cozumun Dogru", "success").then(function(value){
+				// 	console.log(value);
+				// });
+			}, 1300);
 			return;
 		}
 		currentMove++;
 		chess.move(gameHistory[currentMove].san);
 		var boardMove = "";
 		boardMove = gameHistory[currentMove].from + "-" + gameHistory[currentMove].to;
-		setTimeout(function() {
-			newBoard.move(boardMove); 
+		setTimeout(function () {
+			newBoard.move(boardMove);
 		}, 300);
 		currentMove++;
 		move = gameHistory[currentMove];
 	} else {
+		var wrongAudio = new Audio("audio/wrong.mp3");
+		wrongAudio.play();
 		console.log("ELSE");
 		chess.undo();
-		//move = gameHistory[currentMove];
-		console.log(move);
 		return 'snapback';
 	}
 }
+
+// Rerender cheess board to animate it 
+function reRenderChessBoard() {
+	$('#newBoard').hide().show(0);
+}
+
+function toggleFullScreen() {
+	var elem = document.getElementById("fullscreen");
+	if (elem.webkitRequestFullscreen) {
+		elem.webkitRequestFullscreen();
+	}
+}
+
+function changeProgressBar(progressBarId, currentValue, minValue, maxValue){
+	$("#"+progressBarId).attr("aria-valuenow", currentValue);
+	$("#"+progressBarId).attr("aria-valuemin", minValue); 
+	$("#"+progressBarId).attr("aria-valuemax", maxValue);
+	var percentageValue = (currentValue/(maxValue-minValue))*100;
+	console.log("Current", currentValue);
+	console.log("Max value", maxValue);
+	console.log("minvalue:", minValue);
+	console.log(percentageValue);
+	$("#"+progressBarId).css("width", percentageValue + '%');
+}
+
+// Event listeners for key bindings
+document.addEventListener("keydown", function (e) {
+	if (e.keyCode == 13) {
+		toggleFullScreen();
+	}
+}, false);
+
+// Button Functionality
+
+$('#btnPreviousGame').on('click', function () {
+	if (currentGameInPGN > 0) {
+		currentGameInPGN--;
+		loadBoard();
+		reRenderChessBoard();
+	}
+})
+
+$('#btnNextGame').on('click', function () {
+	if (currentGameInPGN < gamesCountInPGN - 1) {
+		console.log(currentGameInPGN);
+		currentGameInPGN++;
+		loadBoard(PGNFile);
+		reRenderChessBoard();
+	}
+})
+
+$('#btnHint').on('click', function () {
+	// Find the squares to highlight
+	var fromSquare = gameHistory[currentMove].from;
+	var toSquare = gameHistory[currentMove].to;
+
+	// Add the highlight
+	boardElement.find('.square-' + fromSquare).addClass('highlight-white');
+	boardElement.find('.square-' + toSquare).addClass('highlight-white');
+
+	// Remove the classes after 2 seconds
+	setTimeout(function () {
+		boardElement.find('.square-' + fromSquare).removeClass('highlight-white');
+		boardElement.find('.square-' + toSquare).removeClass('highlight-white');
+	}, 2000);
+
+})
+
 
 // var pgnToTactics = function() {
 // 	_get_file("../pgn/oneGame.pgn", function(response) {

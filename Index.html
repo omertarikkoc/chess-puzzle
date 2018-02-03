@@ -5,12 +5,29 @@
 	<title>Chess tactics</title>
 	<link rel="stylesheet" type="text/css" href="css/chessboard.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
-	<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="./bower_components/bootstrap-sweetalert/dist/sweetalert.css">
-	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
+	<!-- Compiled and minified Material CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-	<meta charset="utf-8">
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<style>
+		/* For Desktop START*/
+
+		#newBoard {
+			max-width: 100%;
+			height: auto;
+			margin: auto;
+		}
+
+
+		/* For Desktop END */
+
 		#btn-close-modal {
 			width: 100%;
 			text-align: center;
@@ -54,97 +71,106 @@
 			box-shadow: inset 0 0 3px 3px yellow;
 		}
 
-		.modal-content {
-			text-align: center;
-		}
+		/* For Mobile */
 
-		.full-height {
-			height: 95vh;
+		@media only screen and (max-width: 720px) {
+			#newBoard {
+				width: 100%;
+			}
+
+			.board-b72b1{
+				border:none !important;
+			}
+			.chessboardcard{
+				margin-right: 1px;
+			}
+			#progress-bar-games {
+				margin-top: 1.5rem;
+			}
 		}
 	</style>
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-	<a class="navbar-brand" href="#">Chess Puzzle</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-	    aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
 
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active">
-				<a class="nav-link" href="#">Home
-					<span class="sr-only">(current)</span>
-				</a>
+<nav>
+	<div class="nav-wrapper">
+		<a href="#" class="brand-logo center">Chess Puzzle</a>
+		<ul id="nav-mobile" class="left hide-on-med-and-down">
+			<li>
+				<a href="sass.html">Sass</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Link</a>
+			<li>
+				<a href="badges.html">Components</a>
 			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-				    aria-expanded="false">
-					Dropdown
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="#">Action</a>
-					<a class="dropdown-item" href="#">Another action</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Something else here</a>
-				</div>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link disabled" href="#">Disabled</a>
+			<li>
+				<a href="collapsible.html">JavaScript</a>
 			</li>
 		</ul>
-		<!-- <form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		</form> -->
 	</div>
 </nav>
 
 <body id="bodyId">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
-			<!-- <div class="col-sm-12 col-md-3 col-xl-2 bd-sidebar bg-light full-height"> Sidebar </div> -->
-			<div class="col-sm-12 col-md-9 col-xl-8 py-md-3 pl-md-5 fullscreen">
-				<center>
-					<div id="successAlert" style="display:none" class="alert alert-danger alert-dismissible fade" role="alert">
-						<strong>Dogru cozdun! Tebrikler!</strong> Simdi diger soruya gec!
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="progress mt-3 mb-3" style="width: 60%">
-						<div id="progress-bar-games" class="progress-bar bg-success progress-bar-animated progress-bar-striped" role="progressbar" style="width: 1%" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-					<!-- <a href="#" onClick="toggleFullScreen()">Full Screen Mode (Press Enter)</a> -->
-					<div id="newBoard" style="width: 60%; max-height: 80%" class="animated fadeIn"></div>
-					<div class="buttonGroup mt-3">
-						<button type="button" id="btnPreviousGame" class="btn btn-primary">
-							<i class="fas fa-chevron-circle-left"></i>
-						</button>
-						<button type="button" id="btnNextGame" class="btn btn-primary">
-							<i class="fas fa-chevron-circle-right"></i>
-						</button>
-						<button type="button" id="btnHint" class="btn btn-warning">
-							<i class="fas fa-info-circle"></i> Hint</button>
-					</div>
-				</center>
-			</div>
-			<div class="col-sm-12 d-none d-xl-block col-xl-2 bd-toc bg-light full-height">
-				<p>Durum:
-					<span id="puzzleCompletionStatus"></span>
-				</p>
-			</div>
+			<div class="col s12 m6 l6  boardContainer">
+				<div class="progress" id="progress-bar-games">
+					<div class="determinate" style="width: 70%"></div>
+				</div>
 
+				<!-- <div class="progress mt-3 mb-3" style="width: 60%">
+						<div id="progress-bar-games" class="progress-bar bg-success progress-bar-animated progress-bar-striped" role="progressbar"
+						    style="width: 1%" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
+					</div> -->
+				<!-- <a href="#" onClick="toggleFullScreen()">Full Screen Mode (Press Enter)</a> -->
+				<div class="card z-depth-4 chessboardcard">
+					<div class="card-image">
+						<div id="newBoard" class="animated fadeIn"></div>
+					</div>
+
+					<div class="card-content">
+						<p>Tas Alma Oyunu</p>
+						<p>Haydi bakalim taslari alarak sorulari cozelim.</p>
+					</div>
+				</div>
+
+
+
+
+
+			</div>
+			<div class="col s12 m3 l3">
+				<!-- <p>Durum:
+					<span id="puzzleCompletionStatus"></span>
+				</p> -->
+			</div>
+			<div class="fixed-action-btn toolbar">
+				<a class="btn-floating btn-large red">
+					<i class="large material-icons">open_with</i>
+				</a>
+				<ul>
+					<li class="waves-effect waves-light" id="btnPreviousGame">
+						<a href="#!">
+							<i class="material-icons">arrow_back</i>
+						</a>
+					</li>
+					<li class="waves-effect waves-light" id="btnNextGame">
+						<a href="#!">
+							<i class="material-icons">arrow_forward</i>
+						</a>
+					</li>
+					<li class="waves-effect waves-light" id="btnHint">
+						<a href="#!">
+							<i class="material-icons">help_outline</i>
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 
 	</div>
 	<script src="js/jquery-1.10.1.min.js"></script>
-	<!-- https://code.jquery.com/jquery/ -->
-	<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<!-- <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
 	<script src="./bower_components/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
 	<script src="js/json3.min.js"></script>
 	<!-- https://bestiejs.github.io/json3/ -->

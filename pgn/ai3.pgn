@@ -1,0 +1,234 @@
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "1"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "5k2/7K/8/q7/8/2b5/8/N2r4 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nb3 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "2"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "2k5/K7/8/7q/8/5b2/8/4r2N w - - 0 1"]
+[PlyCount "1"]
+
+1. Ng3 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "3"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "2k5/K7/8/7q/8/5b2/8/4r2N w - - 0 1"]
+[PlyCount "1"]
+
+1. Ng3 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "4"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "n2N4/8/2B5/8/P7/8/7k/5K2 b - - 0 1"]
+[PlyCount "1"]
+
+1... Nb6 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "5"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "5k2/7K/8/q7/8/2b5/8/N2r4 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nb3 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "6"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "2q2k2/7K/8/6N1/8/2b5/8/5r2 w - - 0 1"]
+[PlyCount "1"]
+
+1. Ne4 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "7"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "5R2/8/2B5/8/6n1/8/7k/2Q2K2 b - - 0 1"]
+[PlyCount "1"]
+
+1... Ne3+ *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "8"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "2k2q2/K7/8/1N6/8/5b2/8/2r5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nd4 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "10"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "2k1K3/8/4b3/8/8/1r2N2n/8/r7 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nc2 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "11"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "2K2k2/8/3r4/8/8/n2N2n1/8/7r w - - 0 1"]
+[PlyCount "1"]
+
+1. Nf2 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "9"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "2k3K1/8/8/8/8/q3Nb2/8/7r w - - 0 1"]
+[PlyCount "1"]
+
+1. Nc4 (1. Nc2) *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "12"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "2K2k2/8/8/1n4n1/8/3Nr3/8/7r w - - 0 1"]
+[PlyCount "1"]
+
+1. Nf2 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "13"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "7R/8/4N3/4n3/8/1P5B/8/2k2K2 b - - 0 1"]
+[PlyCount "1"]
+
+1... Ng6 (1... Nf7) *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "14"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "1Q6/8/8/4n3/8/2N4R/8/2K1k3 b - - 0 1"]
+[PlyCount "1"]
+
+1... Nc6 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "15"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "6k1/8/7K/4N3/8/8/8/1n1br3 w - - 0 0"]
+[PlyCount "1"]
+
+1. Nd3 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "16"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/1N6/2n5/8/r7/2b5/8/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nc5 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "17"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/8/2B5/R7/8/2N5/1n6/5k1K b - - 0 1"]
+[PlyCount "1"]
+
+1... Nc4 *
+
+[Event "?"]
+[Site "?"]
+[Date "2013.12.30"]
+[Round "?"]
+[White "18"]
+[Black "At ile tas iste."]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/8/5B2/7Q/8/5N2/6n1/K1k5 b - - 0 1"]
+[PlyCount "1"]
+
+1... Nf4 *
+

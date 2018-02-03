@@ -11,8 +11,10 @@ var currentGameInPGN = 0;
 var gamesLoadedFromPGN = false;
 var puzzleCompletionStatus = "";
 var puzzleCompletionStatusElement = $('#progress-bar-games');
+var pgnVariantStartPosition;
+var gamesWithVariants;
 
-_get_file("../pgn/aa1.pgn", function (response) {
+_get_file("../pgn/ai3.pgn", function (response) {
 	PGNFile = response;
 	loadBoard(PGNFile);
 });
@@ -41,21 +43,34 @@ function loadBoard(response) {
 				sliceEndPosition = PGNFile.length - 2;
 			}
 			console.log("Start: ", sliceStartPosition, "| End: ", sliceEndPosition);
+			
 			gamesInPGN.push(response.slice(sliceStartPosition, sliceEndPosition));
+			
+
+			
+			
+			pgnVariantStartPosition = response.slice(sliceStartPosition, sliceEndPosition).indexOf('(');
+			if(pgnVariantStartPosition > 0) {
+				console.log("There is a game with a variant", pgnVariantStartPosition);
+				console.log(response.slice(sliceStartPosition, sliceEndPosition));
+			}
 			gamesLoadedFromPGN = true;
 		}
 		console.log("Total Games in The PGN: ", gamesCountInPGN);
 	}
-	//console.log(gamesInPGN);
-	//console.log(gamesInPGN[3]);
-
 
 	newPGN = gamesInPGN[currentGameInPGN];
 	newPGN = newPGN.split('\n');
 
 	//_loadFromPGN(newPGN.join("\n"));
-
+	if(!(chess.load_pgn(newPGN.join('\n')))){
+		console.log("Game had error while loading: ", currentGameInPGN);
+		currentGameInPGN++;
+		loadBoard(response);
+	}
+	
 	chess.load_pgn(newPGN.join('\n'));
+	console.log("Game Number:",currentGameInPGN,chess.load_pgn(newPGN.join('\n')));
 
 
 
